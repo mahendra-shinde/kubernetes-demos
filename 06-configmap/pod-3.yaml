@@ -1,0 +1,28 @@
+apiVersion: v1  
+kind: Pod       
+metadata:
+  name: pod3    
+  labels:       
+    name: web3
+  
+spec:
+  containers:
+  - name: db1
+    image: mysql:5.7 
+    envFrom:
+      - configMapRef:
+          name: myconfig
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 3306
+  - name: test
+    image: mahendrshinde/mysql-client:latest
+    imagePullPolicy: IfNotPresent
+    command: ['sh','-c','echo Hello World && sleep 3600']
+    resources:
+      limits:
+        memory: "64Mi"
+        cpu: "100m"

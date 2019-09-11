@@ -1,0 +1,22 @@
+# following three lines provide META-DATA for current object
+apiVersion: v1  # k8s API version
+kind: Pod       # Type pf OBJECT this file manages/deploys
+metadata:
+  name: pod1    # Unique name for this object
+  labels:       # Optional labels (User defined key/value pairs)
+    name: web1
+  
+# The actual object (POD) definition 
+spec:
+  containers:   # list of containers (now SINGLE)
+  # start of first (and only container)
+  - name: web1  # name for container
+    image: nginx:1.7.9  # container image 
+    # Optional resource contraints
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    # application port (nginx uses 80)
+    ports:
+      - containerPort: 80

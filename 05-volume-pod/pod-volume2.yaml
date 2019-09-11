@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-pod2
+  labels:
+    name: volume-pod2
+spec:
+  volumes:
+    - name: vol1
+      ## Directory on Node's Filesystem
+      ## Deleting POD does not affect this directory
+      ## Allows Sharing Volume between PODS in same NODE!
+      hostPath:
+        path: /var/myvol
+        
+  containers:
+  - name: myapp2
+    image: nginx:1.7.9
+    volumeMounts:
+      - name: vol1
+        mountPath: "/data"
+        readOnly: false
+    resources:
+      limits:
+        memory: "64Mi"
+        cpu: "100m"
+    ports:
+      - containerPort: 80
