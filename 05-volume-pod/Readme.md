@@ -12,21 +12,21 @@ The  Volume which would NOT be destroyed along with POD. After re-creating pod, 
     labels:
         name: volume-pod2
     spec:
-    volumes:
+      volumes:
         - name: vol1
         ## Directory on Node's Filesystem
         ## Deleting POD does not affect this directory
         ## Allows Sharing Volume between PODS in same NODE!
-        hostPath:
+          hostPath:
             path: /var/myvol
             
     containers:
-    - name: myapp2
+      - name: myapp2
         image: nginx:1.7.9
         volumeMounts:
         - name: vol1
-            mountPath: "/data"
-            readOnly: false
+          mountPath: "/data"
+          readOnly: false
         resources:
         limits:
             memory: "64Mi"
@@ -34,6 +34,8 @@ The  Volume which would NOT be destroyed along with POD. After re-creating pod, 
         ports:
         - containerPort: 80
     ```
+    Click [here](./pod-volume2.yaml) for complete YAML file.
+    
 2.  Save the file using name `pod-volume2.yaml` and deploy using `kubectl`
 
     ```bash
