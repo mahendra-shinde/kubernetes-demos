@@ -12,13 +12,13 @@ This example uses a pod with single container (nginx).
     labels:
         name: web1
     spec:
-    containers:
-    - name: web1
-        image: nginx:1.7.9
+        containers:
+        - name: web1
+          image: nginx:1.7.9
         resources:
-        limits:
-            memory: "128Mi"
-            cpu: "500m"
+            limits:
+                memory: "128Mi"
+                cpu: "500m"
         ports:
         - containerPort: 80
     ```
