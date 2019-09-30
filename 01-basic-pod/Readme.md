@@ -15,12 +15,12 @@ This example uses a pod with single container (nginx).
         containers:
         - name: web1
           image: nginx:1.7.9
-        resources:
+          resources:
             limits:
                 memory: "128Mi"
                 cpu: "500m"
-        ports:
-        - containerPort: 80
+          ports:
+          - containerPort: 80
     ```
     > click [here](./basic-pod1.yaml) for the complete file and comments.
 
@@ -29,7 +29,7 @@ This example uses a pod with single container (nginx).
     ```bash
     $ kubectl apply -f basic-pod1.yaml
     # verify the pod status (using label filter)
-    $ kubectl get pods -l web1
+    $ kubectl get pods -l name=web1
     ```
 3.  Clean-up, delete the recently created pod
 
