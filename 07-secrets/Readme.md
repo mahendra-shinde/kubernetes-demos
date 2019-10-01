@@ -19,8 +19,8 @@
     Now, run following commands:
 
     ```bash
-    $ kubectl apply -f ./myconfig.yml
-    $ kubectl describe -f ./myconfig.yml
+    $ kubectl apply -f ./mysecret.yml
+    $ kubectl describe -f ./mysecret.yml
     ```
 
 2.  Create a pod that uses ConfigMap [pod](./pod-4.yaml)
@@ -58,15 +58,15 @@
     Now, run following commands:
 
     ```bash
-    $ kubectl apply -f ./pod-3.yaml
+    $ kubectl apply -f ./pod-4.yaml
     $ kubectl get pods
     ```
 
-3.  Once, pod status for "pod3" chages to RUNNING,
+3.  Once, pod status for "pod4" chages to RUNNING,
     try entering inside the pod.
 
     ```bash
-    $ kubectl exec pod3 -c test -it sh  
+    $ kubectl exec pod4 -c test -it sh  
     # try connecting mysql server (Use loopback ip or pod name)
     $ mysql -umahendra -pPassword@1234 -h pod3
     $ exit
@@ -76,6 +76,6 @@
 4.  Delete the resources
 
     ```bash
-    $ kubectl delete -f pod-3.yaml
-    $ kubectl delete -f myconfig.yml
+    $ kubectl delete -f pod-4.yaml
+    $ kubectl delete -f mysecret.yml
     ```
