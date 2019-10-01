@@ -6,25 +6,25 @@
     apiVersion: apps/v1
     kind: ReplicaSet
     metadata:
-    name: myapp
+        name: myapp
     spec:
-    replicas: 10
-    selector:
-    ## Identify which PODS should be part of this Set
-        matchLabels:
-        name: myapp
-    template: # Begining of POD Template
-        metadata:
-        ## define name of POD (Must MATCH with Line# 10 )
-        name: myapp
-        labels:
-            name: myapp
+        replicas: 10
+        selector:
+        ## Identify which PODS should be part of this Set
+            matchLabels:
+                name: myapp
+        template: # Begining of POD Template
+            metadata:
+            ## define name of POD (Must MATCH with Line# 10 )
+                name: myapp
+                labels:
+                    name: myapp
         spec:
         containers:
-            - image: nginx:1.7.9
+        -   image: nginx:1.7.9
             name: web
             ports:
-                - containerPort: 80
+            -   containerPort: 80
     ```
 
 2.  Now, use following commands to deploy the replica set on cluster.

@@ -6,28 +6,28 @@
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-    name: deploy1
+        name: deploy1
     spec:
-    replicas: 3
-    revisionHistoryLimit: 10
-    strategy:
-        rollingUpdate:
-        maxSurge: 1
-        maxUnavailable: 1
-    minReadySeconds: 3
-    selector:
-        matchLabels:
-        app: web1
-    template:
-        metadata:
-        labels:
-            app: web1
-        spec:
-        containers:
-        - name: web
-            image: nginx:1.7.9
-            ports:
-            - containerPort: 80
+        replicas: 3
+        revisionHistoryLimit: 10
+        strategy:
+            rollingUpdate:
+            maxSurge: 1
+            maxUnavailable: 1
+        minReadySeconds: 3
+        selector:
+            matchLabels:
+                app: web1
+        template:
+            metadata:
+                labels:
+                    app: web1
+            spec:
+                containers:
+                -   name: web
+                    image: nginx:1.7.9
+                    ports:
+                -   containerPort: 80
     ```
 
 2.  Now, run following commands to deploy.
