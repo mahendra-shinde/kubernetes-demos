@@ -1,18 +1,19 @@
-## Config Map Demo
-
-1. Create a configmap from file [myconfig](./myconfig.yaml)
+## Secret Demo
+1. Create a secret from file [mysecret](./mysecret.yaml)
 
     ```yaml
     apiVersion: v1
-    kind: ConfigMap
+    kind: Secret
+    type: Opaque
     metadata:
-    name: myconfig
+        name: mysecret
     data:
-    MYSQL_ROOT_PASSWORD: Password@123
-    MYSQL_USER: mahendra
-    MYSQL_PASSWORD: Password@1234
-    MYSQL_DATABASE: data1
-    MYSQL_ROOT_HOST: 127.0.0.1
+        # Using root password: Password123
+        MYSQL_ROOT_PASSWORD: UGFzc3dvcmQxMjM=
+        # Using user password: Password1234
+        MYSQL_PASSWORD: UGFzc3dvcmQxMjM0 
+        MYSQL_DATABASE: ZGF0YTE= 
+        MYSQL_USER: bWFoZW5kcmE=     
     ```
 
     Now, run following commands:
@@ -22,35 +23,35 @@
     $ kubectl describe -f ./myconfig.yml
     ```
 
-2.  Create a pod that uses ConfigMap [pod](./pod-3.yaml)
+2.  Create a pod that uses ConfigMap [pod](./pod-4.yaml)
 
     ```yaml
-    apiVersion: v1  
-    kind: Pod       
+    apiVersion: v1
+    kind: Pod
     metadata:
-    name: pod3    
-    labels:       
-        name: web3
-    
+    name: pod4
+    labels:
+        name: web4
+
     spec:
     containers:
-    - name: db1
-        image: mysql:5.7 
+    -   name: db1
+        image: mysql:5.7
         envFrom:
-        - configMapRef:
-            name: myconfig
+            - secretRef:
+                name: mysecret
         resources:
-        limits:
-            memory: "512Mi"
+            limits:
+            memory: "1Gi"
             cpu: "500m"
         ports:
-        - containerPort: 3306
-    - name: test
+            - containerPort: 3306
+    -   name: test
         image: mahendrshinde/mysql-client:latest
         imagePullPolicy: IfNotPresent
-        command: ['sh','-c','echo Hello World && sleep 3600']
+        command: ["sh", "-c", "echo Hello World && sleep 3600"]
         resources:
-        limits:
+            limits:
             memory: "64Mi"
             cpu: "100m"
     ```
