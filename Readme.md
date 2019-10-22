@@ -29,3 +29,6 @@ Sr No | Description | Links
 
 
 ### Important links:
+1. Kuberenetes [Storage](https://docs.microsoft.com/en-us/azure/aks/concepts-storage) from Azure Docs 
+
+2. Service [Types] (https://docs.microsoft.com/en-us/azure/aks/concepts-network from Azure Docs)

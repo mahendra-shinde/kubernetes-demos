@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app123
+spec:
+  selector:
+    matchLabels:
+      app: app123
+  template:
+    metadata:
+      labels:
+        app: app123
+    spec:
+      containers:
+      - name: app123
+        image: maxunlimited.azurecr.io/sample1:latest
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+        - name: registry-secret1
+      
