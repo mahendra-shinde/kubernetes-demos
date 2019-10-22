@@ -23,7 +23,7 @@
     $ kubectl describe -f ./mysecret.yml
     ```
 
-2.  Create a pod that uses ConfigMap [pod](./pod-4.yaml)
+2.  Create a pod that uses Secret [pod](./pod-4.yaml)
 
     ```yaml
     apiVersion: v1
