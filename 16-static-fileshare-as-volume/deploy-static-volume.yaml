@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: static-vol-pod
+spec:
+  containers:
+  - image: nginx:latest
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+      - name: azure
+        mountPath: /mnt/azure1
+      - name: azure
+        mountPath: /mnt/azure2
+  volumes:
+  - name: azure
+    azureFile:
+      secretName: azure-secret
+      shareName: share1
+      readOnly: false

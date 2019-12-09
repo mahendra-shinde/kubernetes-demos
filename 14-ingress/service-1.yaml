@@ -2,11 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: app1-svc
+  namespace: mahendra
 spec:
   # On docker desktop load-balancer type would map service to 'localhost'
   type: ClusterIP
   selector:
     app: app1
   ports:
-  - port: 8080
+  - port: 80
     targetPort: 3000

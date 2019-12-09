@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: myjob-2
+  labels:
+    name: myjob
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 30
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: myjob
+            image: ubuntu:trusty
+            command: ["echo","Hello World!"]
+            resources:
+              limits:
+                memory: "35Mi"
+                cpu: "100m"
+            

@@ -2,19 +2,13 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress1
+  namespace: mahendra
 spec:
   rules:
     - host: mydemo.com
-      tls:
-        host: mydemo.com
-        secret: tls-secrets1
       http:
         paths:
         - path: /api
           backend:
-            serviceName: app1-svc.ns1
-            servicePort: 8080
-        - path: /api/v1
-          backend:
-            serviceName: app1-svc.ns2
-            servicePort: 8080
+            serviceName: app1-svc
+            servicePort: http

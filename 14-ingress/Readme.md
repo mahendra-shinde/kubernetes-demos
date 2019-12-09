@@ -43,7 +43,6 @@
     metadata:
         name: app1-svc
     spec:
-    # On docker desktop load-balancer type would map service to 'localhost'
         type: ClusterIP
         selector:
             app: app1
@@ -62,10 +61,30 @@
     $ kubectl get ep app1-svc 
     ```
 
-5.  Deploy the ingress controller
+5.  Create the ingress controller (basic version as service)
 
-    ```shell
-    $ kubectl apply -f ingress.yaml
+    ```yaml
+    kind: Service
+    apiVersion: v1
+    metadata:
+        name: ingress-nginx
+        namespace: ingress-nginx
+    labels:
+        app.kubernetes.io/name: ingress-nginx
+        app.kubernetes.io/part-of: ingress-nginx
+    spec:
+        externalTrafficPolicy: Local
+        type: LoadBalancer
+        selector:
+            app.kubernetes.io/name: ingress-nginx
+            app.kubernetes.io/part-of: ingress-nginx
+        ports:
+        - name: http
+          port: 80
+          targetPort: http
+        - name: https
+          port: 443
+          targetPort: https
     ```
 
-6.  try opening web browser and visiting url `http://localhost:8080`. If you open two diffrent browsers, you should get different hostname (pod name) as an output.
+6. 

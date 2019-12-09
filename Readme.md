@@ -32,3 +32,9 @@ Sr No | Description | Links
 1. Kuberenetes [Storage](https://docs.microsoft.com/en-us/azure/aks/concepts-storage) from Azure Docs 
 
 2. Service [Types] (https://docs.microsoft.com/en-us/azure/aks/concepts-network from Azure Docs)
+
+3. [RBAC](https://docs.bitnami.com/kubernetes/how-to/configure-rbac-in-your-kubernetes-cluster/) in Kubernetes from bitnami.
+
+4.  Deploying Azure [Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/docs/setup/install-existing.md) in AKS Cluster. 
+
+5.  [nginx ingress](https://www.nginx.com/products/nginx/kubernetes-ingress-controller) controller for kubernetes.

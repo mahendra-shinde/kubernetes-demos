@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob-1
+  labels:
+    name: myjob
+spec:
+  ttlSecondsAfterFinished: 30
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: myjob
+        image: ubuntu:trusty
+        command: ["echo","Hello World!"]
+        resources:
+          limits:
+            memory: "35Mi"
+            cpu: "100m"
+        
