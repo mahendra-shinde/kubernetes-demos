@@ -7,8 +7,11 @@ spec:
   revisionHistoryLimit: 10
   strategy:
     rollingUpdate:
+      ### Increase the ORIGINAL REPLICA COUNT by ONE 
       maxSurge: 1
+      ### CAN'T AFFORD MORE THAN ONE INSTANCE DOWN!
       maxUnavailable: 1
+  ## Wait for 3 Seconds after POD is created!
   minReadySeconds: 3
   selector:
     matchLabels:

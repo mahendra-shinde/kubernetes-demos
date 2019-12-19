@@ -1,90 +1,44 @@
-## Exposing a deployment through service
+### Ingress with (Manually Setup nginx Controller)
 
-1.  Use the following sample deployment:
+1.  This demo has THREE files, the first [deployment.yml](./deployment.yml) contains THREE webapps with `cluster-Ip` services.
 
-    ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-        name: app1
-    spec:
-        replicas: 3
-        selector:
-            matchLabels:
-                app: app1
-    template:
-        metadata:
-            labels:
-                app: app1
-        spec:
-            containers:
-            -   name: app1
-                image: mahendrshinde/hostname:node
-                resources:
-                    limits:
-                        memory: "128Mi"
-                        cpu: "500m"
-                    ports:
-                - containerPort: 3000
-    ```
-2.  Deploy and verify the deployment.
-
-    ```shell
-    $ kubectl apply -f deploy-app.yaml
+    ```bash
+    $ kubectl apply -f deployment.yml
     $ kubectl get deploy
-    $ kubectl get rs -l app=app1
-    ```
-  
-3.  Create a service definition for above deployment.
-
-    ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-        name: app1-svc
-    spec:
-        type: ClusterIP
-        selector:
-            app: app1
-        ports:
-        -   port: 8080
-            targetPort: "3000"
+    $ kubectl get svc
+    $ kubectl get rs
     ```
 
-4.  Deploy the service
+2.  The second file is an `ingress-controller`, this controller has multiple components like `serviceaccount`, a `token` for authentication and authorization, and then service type `NodePort` to bind `nginx-controller` service to all nodes.
 
-    ```shell
-    $ kubectl apply -f service-1.yaml
-    # view the service
-    $ kubectl get svc app1-svc
-    # view the endpoints
-    $ kubectl get ep app1-svc 
+    ```bash
+    $ kubectl apply -f ingress-controller.yml
+    ### the entire nginx-controller application is deployed inside 
+    ### a seperate namespace of it's own!!!
+    $ kubectl get all -n nginx-ingress
     ```
 
-5.  Create the ingress controller (basic version as service)
+3.  Now, just need to deploy `ingress-rules`. The only available `ingress-controller` would pick those rules and implement them!
 
-    ```yaml
-    kind: Service
-    apiVersion: v1
-    metadata:
-        name: ingress-nginx
-        namespace: ingress-nginx
-    labels:
-        app.kubernetes.io/name: ingress-nginx
-        app.kubernetes.io/part-of: ingress-nginx
-    spec:
-        externalTrafficPolicy: Local
-        type: LoadBalancer
-        selector:
-            app.kubernetes.io/name: ingress-nginx
-            app.kubernetes.io/part-of: ingress-nginx
-        ports:
-        - name: http
-          port: 80
-          targetPort: http
-        - name: https
-          port: 443
-          targetPort: https
+    ```bash
+    $ kubectl apply -f ingress-rules.yaml
+    $ kubectl describe -f ingress-rules.yaml
+    #### Expect to get name of nginx-ingress-controller in log output.
     ```
 
-6. 
+4.  Now, to test the webapp, you can use `curl` or `postman`
+
+    4.1 Using `curl`
+
+    ```bash
+    $ curl -H "my.kubernetes.example" 10.0.75.2/webapp1
+    $ curl -H "my.kubernetes.example" 10.0.75.2/webapp2
+    ```
+
+    NOTE: the ip address `10.0.75.2` belogs to your hyper-v VM
+
+    4.2 Using `Postman`
+
+    ![alt text](postman.png "test url with postman")
+
+    

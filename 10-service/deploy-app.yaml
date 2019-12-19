@@ -15,9 +15,5 @@ spec:
       containers:
       - name: app1
         image: mahendrshinde/hostname:node
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         ports:
         - containerPort: 3000
