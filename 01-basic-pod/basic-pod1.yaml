@@ -11,12 +11,12 @@ spec:
   containers:   # list of containers (now SINGLE)
   # start of first (and only container)
   - name: web1  # name for container
-    image: nginx:1.7.9  # container image 
+    image: mahendrshinde/myweb:latest  # container image from my 
     # Optional resource contraints
     resources:
       limits:
-        memory: "128Mi"
-        cpu: "500m"
+        memory: "64Mi"
+        cpu: "100m"
     # application port (nginx uses 80)
     ports:
       - containerPort: 80

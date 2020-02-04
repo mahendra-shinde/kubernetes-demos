@@ -17,7 +17,7 @@ The basic volume (part of pod deployment) is destroyed along with POD.
 
     containers:
     - name: myapp
-        image: nginx:1.7.9
+        image: mahendrshinde/myweb:latest
         volumeMounts:
         - name: vol1
             mountPath: "/data"

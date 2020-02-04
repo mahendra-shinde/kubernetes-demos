@@ -12,8 +12,12 @@ spec:
       labels:
         app: app1
     spec:
+      ### Docker registry secret mapping for current deployment
+      imagePullSecrets:
+        - name: reg1
       containers:
       - name: app1
-        image: mahendrshinde/myweb:latest
+        imagePullPolicy: IfNotPresent
+        image: myacr0123.azurecr.io/myweb:latest
         ports:
         - containerPort: 80

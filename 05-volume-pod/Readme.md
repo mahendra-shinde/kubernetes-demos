@@ -22,7 +22,7 @@ The  Volume which would NOT be destroyed along with POD. After re-creating pod, 
             
     containers:
       - name: myapp2
-        image: nginx:1.7.9
+        image: mahendrshinde/myweb:latest
         volumeMounts:
         - name: vol1
           mountPath: "/data"

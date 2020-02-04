@@ -17,12 +17,12 @@ This example uses a pod with two containers (nginx and mysql).
       containers:   # list of containers 
       # start of first container
       - name: web1  # name for container
-        image: nginx:1.7.9  # container image 
+        image: mahendrshinde/myweb:latest  # container image 
         # Optional resource contraints
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "100m"
         # application port (nginx uses 80)
         ports:
           - containerPort: 80
@@ -65,7 +65,7 @@ This example uses a pod with two containers (nginx and mysql).
     
     ```bash
     $ kubectl exec pod3 -c test -it sh
-    # Once inside the container test nginx running on 80
+    # Once inside the container test myweb running on 80
     $ wget --spider http://pod3:80
     # Now, lets test if MySQL is listening on port 3306
     $ telnet pod3 3306

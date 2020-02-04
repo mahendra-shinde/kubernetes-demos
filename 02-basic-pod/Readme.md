@@ -17,12 +17,12 @@ This example uses a pod with two containers (nginx and mysql).
       containers:   # list of containers 
       # start of first container
       - name: web1  # name for container
-        image: nginx:1.7.9  # container image 
+        image: mahendrshinde/myweb:latest  # container image 
         # Optional resource contraints
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "100m"
         # application port (nginx uses 80)
         ports:
           - containerPort: 80

@@ -14,11 +14,11 @@ This example uses a pod with single container (nginx).
     spec:
         containers:
         - name: web1
-          image: nginx:1.7.9
+          image: mahendrshinde/myweb:latest
           resources:
             limits:
-                memory: "128Mi"
-                cpu: "500m"
+                memory: "64Mi"
+                cpu: "100m"
           ports:
           - containerPort: 80
     ```

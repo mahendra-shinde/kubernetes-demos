@@ -19,12 +19,8 @@
         spec:
             containers:
             -   name: app1
-                image: mahendrshinde/hostname:node
-                resources:
-                    limits:
-                        memory: "128Mi"
-                        cpu: "500m"
-                    ports:
+                image: mahendrshinde/myweb:latest
+                ports:
                 - containerPort: 3000
     ```
 2.  Deploy and verify the deployment.
@@ -49,7 +45,7 @@
             app: app1
         ports:
         - port: 8080
-            targetPort: 3000
+            targetPort: 80
     ```
 
 4.  Deploy the service

@@ -21,7 +21,7 @@
                     name: myapp
         spec:
         containers:
-        -   image: nginx:1.7.9
+        -   image: mahendrshinde/myweb:latest
             name: web
             ports:
             -   containerPort: 80
