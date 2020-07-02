@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: app123
-        image: maxunlimited.azurecr.io/sample1:latest
+        image: maxunlimited.azurecr.io/myweb:latest
         imagePullPolicy: Always
         resources:
           limits:
@@ -22,5 +22,5 @@ spec:
         ports:
         - containerPort: 3000
       imagePullSecrets:
-        - name: registry-secret1
+        - name: acrsecret
       
