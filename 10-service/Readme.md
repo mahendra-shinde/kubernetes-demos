@@ -12,16 +12,16 @@
         selector:
             matchLabels:
                 app: app1
-    template:
-        metadata:
-            labels:
-                app: app1
-        spec:
-            containers:
-            -   name: app1
-                image: mahendrshinde/myweb:latest
-                ports:
-                - containerPort: 80
+        template:
+            metadata:
+                labels:
+                    app: app1
+            spec:
+                containers:
+                -   name: app1
+                    image: mahendrshinde/myweb:latest
+                    ports:
+                    - containerPort: 80
     ```
 2.  Deploy and verify the deployment.
 
