@@ -8,26 +8,26 @@ The basic volume (part of pod deployment) is destroyed along with POD.
     apiVersion: v1
     kind: Pod
     metadata:
-    name: volume-pod1
-    labels:
         name: volume-pod1
+        labels:
+            name: volume-pod1
     spec:
-    volumes:
-        - name: vol1
+        volumes:
+            - name: vol1
 
-    containers:
-    - name: myapp
-        image: mahendrshinde/myweb:latest
-        volumeMounts:
-        - name: vol1
-            mountPath: "/data"
-            readOnly: false
-        resources:
-        limits:
+        containers:
+        - name: myapp
+          image: mahendrshinde/myweb:latest
+          volumeMounts:
+            - name: vol1
+              mountPath: "/data"
+              readOnly: false
+          resources:
+          limits:
             memory: "64Mi"
             cpu: "100m"
-        ports:
-        - containerPort: 80
+          ports:
+          - containerPort: 80
     ```
 
 2.  Save the file using name `pod-volume1.yaml` and deploy using `kubectl`

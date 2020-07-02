@@ -8,8 +8,8 @@ The  Volume which would NOT be destroyed along with POD. After re-creating pod, 
     apiVersion: v1
     kind: Pod
     metadata:
-    name: volume-pod2
-    labels:
+      name: volume-pod2
+      labels:
         name: volume-pod2
     spec:
       volumes:
@@ -20,7 +20,7 @@ The  Volume which would NOT be destroyed along with POD. After re-creating pod, 
           hostPath:
             path: /var/myvol
             
-    containers:
+      containers:
       - name: myapp2
         image: mahendrshinde/myweb:latest
         volumeMounts:

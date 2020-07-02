@@ -29,9 +29,9 @@
     apiVersion: v1
     kind: Pod
     metadata:
-    name: pod4
-    labels:
-        name: web4
+        name: pod4
+        labels:
+            name: web4
 
     spec:
     containers:

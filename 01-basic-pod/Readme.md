@@ -8,8 +8,8 @@ This example uses a pod with single container (nginx).
     apiVersion: v1
     kind: Pod
     metadata:
-    name: pod1
-    labels:
+        name: pod1
+        labels:
         name: web1
     spec:
         containers:
