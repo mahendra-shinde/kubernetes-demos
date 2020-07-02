@@ -20,11 +20,11 @@
                 labels:
                     name: myapp
         spec:
-        containers:
-        -   image: mahendrshinde/myweb:latest
-            name: web
-            ports:
-            -   containerPort: 80
+            containers:
+            -   image: mahendrshinde/myweb:latest
+                name: web
+                ports:
+                -   containerPort: 80
     ```
 
 2.  Now, use following commands to deploy the replica set on cluster.
