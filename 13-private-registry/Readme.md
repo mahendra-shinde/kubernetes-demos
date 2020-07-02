@@ -23,8 +23,7 @@
     ```
 
     ```
-    $ kubectl create secret docker-registry acrsecret --docker-server=maxunlimited.azurecr.io --docker
--username=maxunlimited --docker-password=vT6LCl2xfDB=w8i4ADRRpSYL+49Mnx4F
+    $ kubectl create secret docker-registry acrsecret --docker-server=maxunlimited.azurecr.io --docker-username=maxunlimited --docker-password=vT6LCl2xfDB=w8i4ADRRpSYL+49Mnx4F
     ```
 
 4.  Deploy the application
