@@ -72,7 +72,7 @@
 6.  View the rollout history
 
     ```bash
-    $ kubectl rollout history
+    $ kubectl rollout history -f deploy-1.yaml
     ```
 
 7.  Performing rolling update using declarative option (editing deploy-1.yaml)
@@ -81,7 +81,7 @@
 
     ```bash
     $ kubectl apply -f deploy-1.yaml --record
-    $ kubectl rollout history
+    $ kubectl rollout history -f deploy-1.yaml
     $ kubectl get rs -o wide -l app=web1
     ```
     
