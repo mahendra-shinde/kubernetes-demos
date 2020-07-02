@@ -21,7 +21,7 @@
             -   name: app1
                 image: mahendrshinde/myweb:latest
                 ports:
-                - containerPort: 3000
+                - containerPort: 80
     ```
 2.  Deploy and verify the deployment.
 
