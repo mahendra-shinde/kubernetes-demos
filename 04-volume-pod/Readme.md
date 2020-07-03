@@ -40,7 +40,7 @@ The basic volume (part of pod deployment) is destroyed along with POD.
 3.  Execute `bash` on running pod (Enter inside pod container to verify volume)
 
     ```bash
-    $ kubectl exec -it volume-pod1 bash
+    $ kubectl exec -it volume-pod1 sh
     $ cd /data
     $ echo "Testing the filesystem" > file1
     $ exit
@@ -53,7 +53,7 @@ The basic volume (part of pod deployment) is destroyed along with POD.
     # wait for 1 minutes and then
     $ kubectl apply -f volume-pod1.yaml
     # Execute bash on container 
-    $ kubectl exec -it volume-pod1 bash
+    $ kubectl exec -it volume-pod1 sh
     $ cd /data
     # Try display content of file1
     $ cat file1
