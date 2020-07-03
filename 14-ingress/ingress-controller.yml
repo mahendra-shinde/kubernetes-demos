@@ -26,7 +26,7 @@ metadata:
   namespace: nginx-ingress
 data:
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-ingress
@@ -70,7 +70,9 @@ metadata:
   name: nginx-ingress
   namespace: nginx-ingress
 spec:
-  type: NodePort
+  # use type "LoadBalancer" in Docker Desktop
+  # Use type "NodePort" in Managed Kubernetes (AKS, EKS or GKE)
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
@@ -82,5 +84,6 @@ spec:
     name: https
   selector:
     app: nginx-ingress
-  externalIPs:
-    - 10.0.75.2
+  # Uncomment below lines for managed kubernetes (AKS, EKS or GKE)
+  # externalIPs:
+  #   - 10.0.75.2
