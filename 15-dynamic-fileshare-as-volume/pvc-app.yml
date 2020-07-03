@@ -36,7 +36,7 @@ metadata:
 spec:
   # On AKS load-balancer type would map service to a public ip
   # use kubectl get svc az-app-svc to get 'external-ip'
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: app1
   ports:
