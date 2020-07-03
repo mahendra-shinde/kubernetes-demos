@@ -38,7 +38,7 @@ spec:
   # use kubectl get svc az-app-svc to get 'external-ip'
   type: LoadBalancer
   selector:
-    app: app1
+    app: az-vol
   ports:
   - port: 80
     targetPort: 80

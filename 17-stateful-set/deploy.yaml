@@ -29,13 +29,13 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: k8s.gcr.io/nginx-slim:0.8
+        image: mahendrshinde/myweb
         ports:
         - containerPort: 80
           name: web
         volumeMounts:
         - name: www
-          mountPath: /usr/share/nginx/html
+          mountPath: /data
   volumeClaimTemplates:
   - metadata:
       name: www
@@ -44,4 +44,18 @@ spec:
       resources:
         requests:
           storage: 1Gi
+---
+## The actual loadbalacer service
+apiVersion: v1
+kind: Service
+metadata:
+  name: sts-app
+spec:
+  type: LoadBalancer
+  selector:
+      app: nginx
+  ports:
+  - port: 8081
+    targetPort: 80
+
 
