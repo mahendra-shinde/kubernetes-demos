@@ -1,3 +1,5 @@
+## Use only when storageClass 'azurefile' is missing !
+## only in AKS
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:

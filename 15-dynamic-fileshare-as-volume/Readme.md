@@ -1,4 +1,4 @@
-## Persistant Volume claim
+## Persistant Volume claim with Azure FileShare
 
 > Use this demo on AKS Cluster
 
@@ -15,21 +15,21 @@ Command to get the credentials
 $ az aks get-credentials -n myaks9090 -g aks-group1
 ```
 
-Create the new Storage class [managed-disk](./managed-disk.yml)
-```bash
-$ kubectl apply -f managed-disk.yml 
-$ kubectl get sc
+Create a new [persisted volume claim](./az-file-pvc.yml)
 ```
-
-Create a new [persistent volume claim](./managed-disk-claim.yml) 
-```bash
-$ kubectl apply -f managed-disk-claim.yml
+$ kubectl apply -f az-file-pvc.yml
 $ kubectl get pvc
-$ kubectl get pv
+$ kubectl describe -f az-file-pvc.yml
 ```
 
-Create a [POD](./pv-pod.yml) to test PVC 
-```bash
-$ kubectl apply -f pv-pod.yml
-$ kubectl describe -f pv-pod.yml
+Create a [deployment](./pvc-app.yml)
+```
+$ kubectl apply -f pvc-app.yml
+$ kubectl describe -f pvc-app.yml
+``` 
+
+Test application from local browser
+```
+$ kubectl get svc az-app-svc
+## Use the external-ip as website address!
 ```

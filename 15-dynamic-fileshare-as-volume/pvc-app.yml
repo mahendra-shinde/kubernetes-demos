@@ -34,7 +34,8 @@ kind: Service
 metadata:
   name: az-app-svc
 spec:
-  # On docker desktop load-balancer type would map service to 'localhost'
+  # On AKS load-balancer type would map service to a public ip
+  # use kubectl get svc az-app-svc to get 'external-ip'
   type: NodePort
   selector:
     app: app1
