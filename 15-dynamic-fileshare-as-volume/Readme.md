@@ -2,7 +2,7 @@
 
 > Use this demo on AKS Cluster
 
-> You need either existing AKS cluster or create new one with *Azure Credentials*
+> You need either existing AKS cluster or create new one with *Azure Subscription*
 
 Command to create new AKS cluster using Azure CLI
 ```bash

@@ -41,7 +41,7 @@ spec:
   # start of third container
   - name: test
     image: busybox
-    imagePullPolicy: Never
+    # imagePullPolicy: Never
     command: ['sh','-c','echo Hello World && sleep 3600']
     resources:
       limits:
