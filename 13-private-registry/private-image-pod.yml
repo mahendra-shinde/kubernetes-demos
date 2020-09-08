@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: app123
-        image: maxunlimited.azurecr.io/myweb:latest
+        image: myreg00001.azurecr.io/myaspapp:latest
         imagePullPolicy: Always
         resources:
           limits:
@@ -22,5 +22,5 @@ spec:
         ports:
         - containerPort: 80
       imagePullSecrets:
-        - name: acrsecret
+        - name: myreg
       

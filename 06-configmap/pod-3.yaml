@@ -6,6 +6,8 @@ metadata:
     name: web3
   
 spec:
+  nodeSelector:
+    kubernetes.io/os: linux
   containers:
   - name: db1
     image: mysql:5.7 

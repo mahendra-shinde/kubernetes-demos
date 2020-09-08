@@ -12,6 +12,8 @@ spec:
       labels:
         app: app1
     spec:
+      nodeSelector:
+        kubernetes.io/os: linux
       containers:
       - name: app1
         image: mahendrshinde/myweb:latest

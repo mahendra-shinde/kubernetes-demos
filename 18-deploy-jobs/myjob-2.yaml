@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: myjob-2
   labels:
-    name: myjob
+    name: myjob-2
 spec:
   schedule: "*/1 * * * *"
   jobTemplate:
@@ -12,6 +12,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          
           containers:
           - name: myjob
             image: ubuntu:trusty

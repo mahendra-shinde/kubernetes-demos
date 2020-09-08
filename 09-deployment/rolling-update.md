@@ -1,6 +1,6 @@
 ## Managing Deployment, Scaling and Rolling updates
 
-1.  Create a deployment `deploy-1.yaml` with following contents:
+1.  Create a deployment [deploy-1.yaml](./deploy-1.yaml) with following contents:
 
     ```yaml
     apiVersion: apps/v1
