@@ -90,6 +90,7 @@
     http://kubernetes.docker.internal:30678
 
     > Please replace kubernetes.docker.internal with your Hostname
+
     > Please replace 30678 with your node-port (refer Step#4)
 
 ## Test ClusterIp service
@@ -120,6 +121,6 @@
 
 ## Clean Up
 
-    ```
-    $ kubectl delete -f . 
-    ```
+```
+$ kubectl delete -f . 
+```
