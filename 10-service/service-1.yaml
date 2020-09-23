@@ -4,9 +4,10 @@ metadata:
   name: app1-svc
 spec:
   # On docker desktop load-balancer type would map service to 'localhost'
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: app1
   ports:
   - port: 8080
     targetPort: 80
+    nodePort: 30009
