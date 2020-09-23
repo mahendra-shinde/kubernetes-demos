@@ -104,7 +104,7 @@
     $ kubectl apply -f test-pod.yml
     ```
 
-3.  Modify the `service-1.yaml` file and set service type at line#7 to `ClusterIp`, deploy the service.
+3.  Modify the `service-1.yaml` file and set service type at line#7 to `ClusterIP`, deploy the service.
 
     ```
     $ kubectl apply -f service-1.yaml
