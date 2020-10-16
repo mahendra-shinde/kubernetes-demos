@@ -16,8 +16,7 @@ spec:
     volumeMounts:
       - name: azure
         mountPath: /mnt/azure1
-      - name: azure
-        mountPath: /mnt/azure2
+      
   volumes:
   - name: azure
     azureFile:
