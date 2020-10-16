@@ -31,4 +31,15 @@
 
     ```
     $ kubectl delete -f deploy.yml
+    $ kubectl delete -f my-pvc.yml
+    ```
+
+6.  Deploy the [StateFulSet](./deploy-sts.yml).
+
+    ```
+    $ kubectl apply -f deploy-sts.yml
+    $ kubectl get pod
+    ## After all pods are READY
+    $ kubectl get pvc
+    # kubectl get pv
     ```
