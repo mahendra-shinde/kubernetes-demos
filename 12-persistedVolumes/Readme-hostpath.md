@@ -43,3 +43,29 @@
     $ kubectl get pvc
     # kubectl get pv
     ```
+
+7.  Try entering inside first pod and create a sample file.
+
+    ```
+    $ kubectl exec -it  pvc-deploy-0 -c web sh
+    $ cd /usr/share/nginx/html/
+    $ echo "Hello world" > file1.txt
+    $ exit
+    ```
+
+8.  Delete the POD and wait for new POD to take it's place. Then check if file still exists!
+
+    ```
+    $ kubectl delete pod pvc-deploy-0
+    $ kubectl exec -it  pvc-deploy-0 -c web sh
+    $ cd /usr/share/nginx/html
+    $ cat file1.txt
+    $ exit
+    ```
+
+9.  Clean-Up
+
+    ```
+    $ kubectl scale sts pvc-deploy --replicas=0
+    $ kubectl delete -f deploy-sts.yml
+    ```
