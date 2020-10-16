@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec:
+  ## How many NODEs (workers) can perform parallel Read/Write on Volume
+  ## Valid Options: ReadOnlyMany, ReadWriteOnce, ReadWriteMany 
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    limits:
+      storage: 5Gi
+    requests:
+      storage: 2Gi

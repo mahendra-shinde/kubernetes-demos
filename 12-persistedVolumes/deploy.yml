@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pvc-deploy
+spec:
+  replicas: 2
+  minReadySeconds: 5
+  selector:
+    matchLabels:
+      app: pv-pods
+  template:
+    metadata:
+      labels:
+        app: pv-pods
+    spec:
+    ## Define a volume 'webdata' and LINK with my-claim
+      volumes:
+      - name: webdata
+        persistentVolumeClaim:
+          claimName: myclaim
+
+      containers:
+      - name: web
+        image: mahendrshinde/myweb
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html/
+          name: webdata
