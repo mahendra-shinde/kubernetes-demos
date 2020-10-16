@@ -2,6 +2,8 @@
 
 > Use this demo on AKS Cluster
 
+> For `docker-desktop` use [this](./Readme-hostpath.md) readme.
+
 > You need either existing AKS cluster or create new one with *Azure Credentials*
 
 Command to create new AKS cluster using Azure CLI
