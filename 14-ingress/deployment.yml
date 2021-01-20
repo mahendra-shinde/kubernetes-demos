@@ -19,6 +19,7 @@ spec:
           httpGet:
             path: /
             scheme: http
+            port: 80
           failureThreshold: 3
           initialDelaySeconds: 30
           periodSeconds: 5
@@ -48,6 +49,7 @@ spec:
           httpGet:
             path: /
             scheme: http
+            port: 80
           failureThreshold: 3
           initialDelaySeconds: 30
           periodSeconds: 5
@@ -76,6 +78,7 @@ spec:
           httpGet:
             path: /
             scheme: http
+            port: 80
           failureThreshold: 3
           initialDelaySeconds: 30
           periodSeconds: 5
