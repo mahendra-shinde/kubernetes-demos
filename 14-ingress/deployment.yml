@@ -14,7 +14,16 @@ spec:
     spec:
       containers:
       - name: webapp1
-        image: katacoda/docker-http-server:latest
+        image: mahendrshinde/myweb:1
+        livenessProbe:
+          httpGet:
+            path: /
+            scheme: http
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 10
+
         ports:
         - containerPort: 80
 ---
@@ -34,7 +43,15 @@ spec:
     spec:
       containers:
       - name: webapp2
-        image: katacoda/docker-http-server:latest
+        image: mahendrshinde/myweb:2
+        livenessProbe:
+          httpGet:
+            path: /
+            scheme: http
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 10
         ports:
         - containerPort: 80
 ---
@@ -54,7 +71,15 @@ spec:
     spec:
       containers:
       - name: webapp3
-        image: katacoda/docker-http-server:latest
+        image: mahendrshinde/myweb:3
+        livenessProbe:
+          httpGet:
+            path: /
+            scheme: http
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 10
         ports:
         - containerPort: 80
 ---
