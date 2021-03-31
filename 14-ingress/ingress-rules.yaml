@@ -2,16 +2,20 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: webapp-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
   - host: my.kubernetes.example
     http:
       paths:
-      - path: /webapp1
+      - path: /webapp1(.*)
+        pathType: Prefix
         backend:
           serviceName: webapp1-svc
           servicePort: 80
-      - path: /webapp2
+      - path: /webapp2(.*)
+        pathType: Prefix
         backend:
           serviceName: webapp2-svc
           servicePort: 80
