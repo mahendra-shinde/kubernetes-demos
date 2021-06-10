@@ -28,9 +28,9 @@ The  Volume which would NOT be destroyed along with POD. After re-creating pod, 
           mountPath: "/data"
           readOnly: false
         resources:
-        limits:
-            memory: "64Mi"
-            cpu: "100m"
+          limits:
+              memory: "64Mi"
+              cpu: "100m"
         ports:
         - containerPort: 80
     ```

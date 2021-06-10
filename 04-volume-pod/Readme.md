@@ -23,9 +23,9 @@ The basic volume (part of pod deployment) is destroyed along with POD.
               mountPath: "/data"
               readOnly: false
           resources:
-          limits:
-            memory: "64Mi"
-            cpu: "100m"
+            limits:
+                memory: "64Mi"
+                cpu: "100m"
           ports:
           - containerPort: 80
     ```
