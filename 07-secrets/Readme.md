@@ -68,7 +68,6 @@
     ```bash
     $ kubectl exec -it pod4 -c test -- sh  
     # try connecting mysql server (Use loopback ip or pod name)
-    $ echo $MYSQL_USER $MYSQL_PASSWORD
     $ mysql -umahendra -pPassword1234 -h pod4
     $ exit
     $ exit
