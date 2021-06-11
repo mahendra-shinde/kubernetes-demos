@@ -12,12 +12,13 @@
         revisionHistoryLimit: 10
         strategy:
             rollingUpdate:
-            maxSurge: 1
-            maxUnavailable: 1
+                maxSurge: 1
+                maxUnavailable: 1
         minReadySeconds: 3
         selector:
             matchLabels:
                 app: web1
+        # template.metadata.labels.app: web1
         template:
             metadata:
                 labels:
@@ -27,7 +28,7 @@
                 -   name: web
                     image: nginx:1.11.0
                     ports:
-                -   containerPort: 80
+                    -   containerPort: 80
     ```
 
 2.  Now, run following commands to deploy.
