@@ -25,7 +25,7 @@
             spec:
                 containers:
                 -   name: web
-                    image: nginx:1.7.9
+                    image: nginx:1.11.0
                     ports:
                 -   containerPort: 80
     ```
@@ -49,11 +49,11 @@
     $ kubectl get rs -l app=web1
     ```
 
-4.  Now, lets try rolling update. Try changing yaml file and update image version from 1.7.9 to 1.11.0 using CLI.
+4.  Now, lets try rolling update. Try changing yaml file and update image version from 1.11.0 to 1.12.0 using CLI.
 
     ```bash
     # Update container image for 'web' container for deployment 'deploy1'
-    $ kubectl set  image deploy/deploy1 web=nginx:1.11.0
+    $ kubectl set  image deploy/deploy1 web=nginx:1.12.0
     # View the rollout status, pod status and replica-sets
     $ kubectl rollout  status deploy/deploy1  
     $ kubectl get pods -l app=web1
@@ -76,7 +76,7 @@
     ```
 
 7.  Performing rolling update using declarative option (editing deploy-1.yaml)
-    Open `deploy-1.yaml` and replace `nginx:1.7.9` to `nginx:1.13`
+    Open `deploy-1.yaml` and replace `nginx:1.11.0` to `nginx:1.13.0`
     Use following command to apply changes and view rollout history.
 
     ```bash
