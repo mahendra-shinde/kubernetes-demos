@@ -17,5 +17,21 @@ spec:
       containers:
       - name: app1
         image: mahendrshinde/myweb:1
+        startupProbe:
+          httpGet:
+            path: /
+            scheme: HTTP
+            port: 80
+          periodSeconds: 20
+
+        ## GET http://pod-ip:80/
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+          failureThreshold: 3
+          periodSeconds: 10
+          timeoutSeconds: 3
         ports:
         - containerPort: 80

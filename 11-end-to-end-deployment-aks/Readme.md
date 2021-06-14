@@ -70,17 +70,18 @@
                 labels:
                     app: app1
             spec:
-            ### Docker registry secret mapping for current deployment
-            imagePullSecrets:
-                ## NAME OF SECRET CREATED IN STEP# 4
-                - name: reg1
-            containers:
-            - name: app1
-                imagePullPolicy: IfNotPresent
-                ## REPLACE WITH YOUR CONTAINER IMAGE NAME
-                image: myacr0123.azurecr.io/myweb:latest 
-                ports:
-                - containerPort: 80
+                ### Docker registry secret mapping for current deployment
+                imagePullSecrets:
+                    ## NAME OF SECRET CREATED IN STEP# 4
+                    - name: reg1
+                containers:
+                -   name: app1
+                    imagePullPolicy: IfNotPresent
+                    ## REPLACE WITH YOUR CONTAINER IMAGE NAME
+                    image: myacr0123.azurecr.io/myweb:latest
+                    ports:
+                        - containerPort: 80
+
     ```
     In `nano` editor, press `CTRL+X` to close the editor, it would ask if you want to save changes, PRESS `Y` and then `ENTER` for accepting the file name.
 
@@ -104,7 +105,7 @@
         selector:
             app: app1
         ports:
-        - port: 8081
+        - port: 80
             targetPort: 80
     ```
 

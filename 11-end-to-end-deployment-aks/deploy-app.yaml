@@ -1,20 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app1
+    name: app1
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: app1
-  template:
-    metadata:
-      labels:
-        app: app1
-    spec:
-      containers:
-      - name: app1
-        imagePullPolicy: IfNotPresent
-        image: mahendrshinde/myweb:latest
-        ports:
-        - containerPort: 80
+    replicas: 3
+    selector:
+        matchLabels:
+            app: app1
+    template:
+        metadata:
+            labels:
+                app: app1
+        spec:
+            ### Docker registry secret mapping for current deployment
+            imagePullSecrets:
+                ## NAME OF SECRET CREATED IN STEP# 4
+                - name: reg1
+            containers:
+            - name: app1
+              imagePullPolicy: IfNotPresent
+              ## REPLACE WITH YOUR CONTAINER IMAGE NAME
+              image: myacr0123.azurecr.io/myweb:latest
+              ports:
+                - containerPort: 80
+
