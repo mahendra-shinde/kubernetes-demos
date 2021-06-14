@@ -8,8 +8,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
-  ## Could be hostPath or managed-disk (AKS)
-  storageClassName: default
   resources:
     limits:
       storage: 5Gi
