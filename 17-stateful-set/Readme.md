@@ -5,6 +5,21 @@
 - Pods are CREATE and DESTROYED in ORDER
     Last pods are FIRST tobe REMOVED
 
+### Benefits
+ - Stable, unique network identities for pods
+ - Stable, persistent storage (using PVC)
+ - Ordered and graceful scaling
+
+### Limitations:
+ - Every sts needs Persistent Volume
+ - Deleting STS will not delete volume
+ - Volumes need manual deletion
+ - Need a Headless service (Service without ClusterIP)
+ - Does not guarantees Pod termination when STS is deleting
+   1. kubectl scale sts web --replicas=0
+   2. kubectl delete sts web
+
+
 1. Delete all old deployments and pods
     
     ```
@@ -33,5 +48,7 @@
 4.  Clean up
 
     ```
+    $ kubectl scale sts web --replicas=0
     $ kubectl delete -f deploy.yaml
+    $ kubectl delete pvc --all
     ```
