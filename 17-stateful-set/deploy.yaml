@@ -52,6 +52,10 @@ metadata:
   name: sts-app
 spec:
   type: LoadBalancer
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP: 
+      timeoutSeconds: 30  
   selector:
       app: nginx
   ports:
