@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+        app: app1
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+      - name: app1
+        image: mahendrshinde/myweb:3
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 500m
+            memory: 500Mi
+        startupProbe:
+          httpGet:
+            path: /
+            scheme: HTTP
+            port: 80
+          periodSeconds: 20
+
+        ## GET http://pod-ip:80/
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+          failureThreshold: 3
+          periodSeconds: 10
+          timeoutSeconds: 3
+        ports:
+        - containerPort: 80

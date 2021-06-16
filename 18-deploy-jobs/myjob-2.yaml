@@ -5,7 +5,8 @@ metadata:
   labels:
     name: myjob-2
 spec:
-  schedule: "*/1 * * * 4-6"
+  schedule: "*/1 * * * 2-4"
+  suspend: false
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: 30
