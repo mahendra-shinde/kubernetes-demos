@@ -46,7 +46,7 @@ The  Volume which would NOT be destroyed along with POD. After re-creating pod, 
 3.  Execute `bash` on running pod (Enter inside pod container to verify volume)
 
     ```bash
-    $ kubectl exec -it volume-pod2 bash
+    $ kubectl exec -it volume-pod2 -- sh
     $ cd /data
     $ echo "Testing the filesystem" > file1
     $ exit
@@ -58,7 +58,7 @@ The  Volume which would NOT be destroyed along with POD. After re-creating pod, 
     # wait for 1 minutes and then
     $ kubectl apply -f volume-pod2.yaml
     # Execute bash on container 
-    $ kubectl exec -it volume-pod2 bash
+    $ kubectl exec -it volume-pod2 -- sh
     $ cd /data
     # Try display content of file1
     $ cat file1
