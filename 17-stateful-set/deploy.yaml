@@ -29,13 +29,13 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: mahendrshinde/myweb
+        image: mahendrshinde/http-session-java:4
         ports:
         - containerPort: 80
           name: web
         volumeMounts:
         - name: www
-          mountPath: /data
+          mountPath: /usr/local/tomcat/temp
   volumeClaimTemplates:
   - metadata:
       name: www
@@ -61,5 +61,3 @@ spec:
   ports:
   - port: 8081
     targetPort: 80
-
-
