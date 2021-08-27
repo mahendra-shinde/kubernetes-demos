@@ -6,7 +6,7 @@ metadata:
     app: nginx
 spec:
   ports:
-  - port: 80
+  - port: 8080
     name: web
   clusterIP: None
   selector:
@@ -30,9 +30,15 @@ spec:
       containers:
       - name: nginx
         image: mahendrshinde/http-session-java:4
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          failureThreshold: 4
+          periodSeconds: 10
         ports:
-        - containerPort: 80
-          name: web
+        - containerPort: 8080
         volumeMounts:
         - name: www
           mountPath: /usr/local/tomcat/temp
@@ -43,7 +49,7 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 1Gi
+          storage: 200Mi
 ---
 ## The actual loadbalacer service
 apiVersion: v1
@@ -51,13 +57,8 @@ kind: Service
 metadata:
   name: sts-app
 spec:
-  type: LoadBalancer
-  sessionAffinity: ClientIP
-  sessionAffinityConfig:
-    clientIP: 
-      timeoutSeconds: 30  
   selector:
       app: nginx
   ports:
   - port: 8081
-    targetPort: 80
+    targetPort: 8080
