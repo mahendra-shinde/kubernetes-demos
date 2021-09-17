@@ -67,5 +67,9 @@
     ```
     $ kubectl apply -f ingress-controller.yml
     $ kubectl get po -n ingress-nginx
-    
+
     ```
+
+3.  Now, use any web browser to visit application (via ingress)
+
+    `http://localhost:8080/`

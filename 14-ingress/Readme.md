@@ -31,8 +31,8 @@
     4.1 Using `wget` on windows 10 (1806) replace 'localhost' with IP 10.0.75.2 if localhost doesn't work
 
     ```pwsh
-    $ wget -Headers @{"Host"="my.kubernetes.example"} "http://localhost/webapp1"
-    $ wget -Headers @{"Host"="my.kubernetes.example"} "http://localhost/webapp2"
+    $ wget "http://localhost:8080/webapp1"
+    $ wget "http://localhost:8080/webapp2"
     ```
 
     NOTE: the ip address `10.0.75.2` belogs to your hyper-v VM
