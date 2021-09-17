@@ -24,6 +24,7 @@
     
     ```
     $ kubectl delete deploy --all
+    $ kubectl delete rs --all
     $ kubectl delete pod --all
     ```
 
@@ -51,4 +52,20 @@
     $ kubectl scale sts web --replicas=0
     $ kubectl delete -f deploy.yaml
     $ kubectl delete pvc --all
+    ```
+
+## Stateful set with Sticky Sessions
+
+1.  Deploy the stateful set and service
+
+    ```
+    $ kubectl apply -f deploy.yaml
+    ```
+
+2.  Make sure you have nginx controller installed, if NOT then please use provided YAML to install one
+
+    ```
+    $ kubectl apply -f ingress-controller.yml
+    $ kubectl get po -n ingress-nginx
+    
     ```
