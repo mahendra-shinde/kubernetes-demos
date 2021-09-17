@@ -23,6 +23,6 @@ spec:
     spec:
       containers:
       - name: web
-        image: nginx:1.11.0
+        image: mahendrshinde/myweb:1
         ports:
         - containerPort: 80
