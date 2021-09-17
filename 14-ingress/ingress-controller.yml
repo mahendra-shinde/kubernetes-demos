@@ -286,7 +286,9 @@ spec:
   externalTrafficPolicy: Local
   ports:
     - name: http
-      port: 80
+    ## Changed port to 8080 as few systems did not allow mapping port 80 on localhost
+    ## to kubernetes service !!
+      port: 8080
       protocol: TCP
       targetPort: http
     - name: https
