@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfsclaim
+spec:
+  ## How many NODEs (workers) can perform parallel Read/Write on Volume
+  ## Valid Options: ReadOnlyMany, ReadWriteOnce, ReadWriteMany 
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: nfs-client
+  resources:
+    limits:
+      storage: 1Gi
+    requests:
+      storage: 200Mi
