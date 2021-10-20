@@ -2,7 +2,7 @@
 
 The basic volume (part of pod deployment) is destroyed along with POD.
 
-1.  Create a new POD  using file [pod-volume.yaml](.\pod-volume.yaml).
+1.  Create a new POD  using file [pod-volume.yaml](./pod-volume1.yaml).
 
     ```bash
     $ kubectl apply -f pod-volume1.yaml
