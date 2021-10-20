@@ -2,32 +2,10 @@
 
 The basic volume (part of pod deployment) is destroyed along with POD.
 
-1.  Create a new POD template using following code:
+1.  Create a new POD  using file [pod-volume.yaml](.\pod-volume.yaml).
 
-    ```yaml
-    apiVersion: v1
-    kind: Pod
-    metadata:
-        name: pod-volume1
-        labels:
-            name: pod-volume1
-    spec:
-        volumes:
-            - name: vol1
-
-        containers:
-        - name: myapp
-          image: mahendrshinde/myweb:latest
-          volumeMounts:
-            - name: vol1
-              mountPath: "/data"
-              readOnly: false
-          resources:
-            limits:
-                memory: "64Mi"
-                cpu: "100m"
-          ports:
-          - containerPort: 80
+    ```bash
+    $ kubectl apply -f pod-volume1.yaml
     ```
 
 2.  Save the file using name `pod-volume1.yaml` and deploy using `kubectl`
@@ -57,7 +35,7 @@ The basic volume (part of pod deployment) is destroyed along with POD.
     $ cd /data
     # Try display content of file1
     $ cat file1
-    # EXPECTED: File not found error
+    # EXPECTED: File contents
     # Now quit the bash and delete pod
     $ exit
     $ kubectl delete -f pod-volume1.yaml
