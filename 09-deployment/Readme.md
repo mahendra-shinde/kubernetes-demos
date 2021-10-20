@@ -28,7 +28,7 @@
     $ kubectl get rs -l app=web1
     ```
 
-4.  Now, lets try rolling update. Try changing yaml file and update image version from 1.11.0 to 1.12.0 using CLI.
+4.  Now, lets try rolling update. Try changing yaml file and update image version from 1 to 2 using CLI.
 
     ```bash
     # Update container image for 'web' container for deployment 'deploy1'
