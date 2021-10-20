@@ -1,36 +1,14 @@
 ## Managing Deployment, Scaling and Rolling updates
 
-1.  Create a deployment [deploy-1.yaml](./deploy-1.yaml) with following contents:
+1.  Download the  deployment [deploy-1.yaml](./deploy-1.yaml) file using following command:
 
-    ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-        name: deploy1
-    spec:
-        replicas: 3
-        revisionHistoryLimit: 10
-        strategy:
-            rollingUpdate:
-                maxSurge: 1
-                maxUnavailable: 1
-        minReadySeconds: 3
-        selector:
-            matchLabels:
-                app: web1
-        # template.metadata.labels.app: web1
-        template:
-            metadata:
-                labels:
-                    app: web1
-            spec:
-                containers:
-                -   name: web
-                    image: nginx:1.11.0
-                    ports:
-                    -   containerPort: 80
+    > On Windows Powershell '-Outfile' is used for target filename, please replace it with '-o' on Mac or Linux Bash
+
     ```
+    $ wget -outfile deploy-1.yaml https://raw.githubusercontent.com/mahendra-shinde/kubernetes-demos/master/09-deployment/deploy-1.yaml
 
+    ```
+   
 2.  Now, run following commands to deploy.
 
     ```bash
@@ -54,7 +32,7 @@
 
     ```bash
     # Update container image for 'web' container for deployment 'deploy1'
-    $ kubectl set  image deploy/deploy1 web=nginx:1.12.0
+    $ kubectl set  image deploy/deploy1 web=mahendrshinde/myweb:2
     # View the rollout status, pod status and replica-sets
     $ kubectl rollout  status deploy/deploy1  
     $ kubectl get pods -l app=web1
@@ -77,7 +55,7 @@
     ```
 
 7.  Performing rolling update using declarative option (editing deploy-1.yaml)
-    Open `deploy-1.yaml` and replace `nginx:1.11.0` to `nginx:1.13.0`
+    Open `deploy-1.yaml` and replace `mahendrshinde/myweb:1` to `mahendrshinde/myweb:3`
     Use following command to apply changes and view rollout history.
 
     ```bash
