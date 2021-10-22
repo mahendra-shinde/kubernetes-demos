@@ -56,3 +56,5 @@
     ```
     $ kubectl delete -f .
     ```
+
+> Please try using 'hpa-2.yaml' for newer v2 version of HPA (Works on Kubernetes v1.20+)
