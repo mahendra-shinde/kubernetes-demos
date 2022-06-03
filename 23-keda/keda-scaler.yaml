@@ -1,0 +1,19 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: keda-scaler
+  namespace: mahendra
+  labels:
+    deploymentName: app1
+spec:
+  maxReplicaCount: 5
+  minReplicaCount: 1
+  scaleTargetRef:
+    name: app1
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://monitor-kube-prometheus-st-prometheus.monitoring:9090
+        metricName: http_requests_total
+        threshold: '100'
+        query: sum(rate(http_requests_total{deployment="app1"}[2m]))
