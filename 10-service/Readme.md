@@ -114,7 +114,7 @@
 
     ```
     $ kubectl exec -it testpod bash
-    $ curl http://aap1-svc:8080
+    $ curl http://app1-svc:8080
     $ curl http://app1-svc:8080
     $ exit
     ```
