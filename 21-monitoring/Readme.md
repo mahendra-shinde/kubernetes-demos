@@ -34,7 +34,7 @@
 
     ```shell
     $ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-    $ helm install my-monitor -f values.yaml  prometheus-community/kube-prometheus-stack --version 16.8.0 -n monitoring
+    $ helm install my-monitor -f values.yaml  prometheus-community/kube-prometheus-stack --version 35.0.0 -n monitoring
     ```
 
 5.  Default username is "admin" and password was set in step# 2 .
